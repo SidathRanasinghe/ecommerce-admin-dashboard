@@ -18,11 +18,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  console.log("Clerk Keys:", {
-    publishable:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.substring(0, 20) + "...",
-    secret: process.env.CLERK_SECRET_KEY ? "Present" : "Missing",
-  });
   return (
     <ClerkProvider>
       <html lang="en">
