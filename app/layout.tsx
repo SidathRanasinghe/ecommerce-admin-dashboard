@@ -1,23 +1,28 @@
-import { ModalProvider } from '@/providers/modal-provider';
-import { ClerkProvider } from '@clerk/nextjs';
-import type { Metadata } from 'next'
-import {  Poppins } from 'next/font/google';
-import ToastProvider from '@/providers/toast-provider';
+import { ModalProvider } from "@/providers/modal-provider";
+import { ClerkProvider } from "@clerk/nextjs";
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import ToastProvider from "@/providers/toast-provider";
 
-import './globals.css'
+import "./globals.css";
 
-const poppins = Poppins({ weight: "500", style: "normal", subsets: ["latin"]});
+const poppins = Poppins({ weight: "500", style: "normal", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Home - Admin Dashboard',
-  description: 'A point to manage your stores, categories and products',
-}
+  title: "Home - Admin Dashboard",
+  description: "A point to manage your stores, categories and products",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  console.log("Clerk Keys:", {
+    publishable:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY?.substring(0, 20) + "...",
+    secret: process.env.CLERK_SECRET_KEY ? "Present" : "Missing",
+  });
   return (
     <ClerkProvider>
       <html lang="en">
@@ -25,9 +30,8 @@ export default function RootLayout({
           <ToastProvider />
           <ModalProvider />
           {children}
-          </body>
+        </body>
       </html>
     </ClerkProvider>
-    
-  )
+  );
 }
