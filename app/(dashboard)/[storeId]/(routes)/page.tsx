@@ -1,15 +1,15 @@
+import { CreditCard, DollarSign, Package } from "lucide-react";
+
 import {
   getGraphRevenue,
   getStockSize,
   getTotalRevenue,
   getTotalSales,
 } from "@/actions/actions";
-import Overview from "@/components/Overview";
 import Heading from "@/components/ui/Heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { priceFormat } from "@/lib/utils";
-import { CreditCard, DollarSign, Package } from "lucide-react";
 
 interface DashboardPageProps {
   params: { storeId: string };

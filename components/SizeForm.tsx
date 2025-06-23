@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Size } from "@prisma/client";
-import Heading from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -17,10 +19,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/ui/Heading";
+
+import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
 
 interface SizeFormProps {
@@ -108,10 +110,10 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
       <Separator />
       <Form {...form}>
         <form
-          className="space-y-8 w-full"
+          className="w-full space-y-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-3">
             <FormField
               control={form.control}
               name="name"

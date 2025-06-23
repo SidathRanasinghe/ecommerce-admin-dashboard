@@ -1,12 +1,13 @@
 "use client";
 
-import { useStoreModal } from "@/hooks/useStoreModal";
-import { Modal } from "@/components/ui/modal";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
 import {
   Form,
   FormControl,
@@ -17,8 +18,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { Modal } from "@/components/ui/modal";
+import { useStoreModal } from "@/hooks/useStoreModal";
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -77,7 +78,7 @@ export const StoreModal = () => {
                 </FormItem>
               )}
             />
-            <div className="pt-5 space-x-2 flex items-center justify-end">
+            <div className="flex items-center justify-end space-x-2 pt-5">
               <Button
                 disabled={isLoading}
                 variant="outline"

@@ -1,4 +1,5 @@
-Great! Let's dive deep into the backend functionalities and Stripe configuration. I'll break this down comprehensively.
+Great! Let's dive deep into the backend functionalities and Stripe
+configuration. I'll break this down comprehensively.
 
 ## Backend Architecture Overview
 
@@ -120,7 +121,7 @@ export async function POST(
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    line_items: products.map((product) => ({
+    line_items: products.map(product => ({
       price_data: {
         currency: "usd",
         product_data: {
@@ -176,7 +177,7 @@ export async function POST(req: Request) {
         phone: session.customer_details?.phone || "",
         address: session.customer_details?.address || "",
         orderItems: {
-          create: session.metadata?.productIds.split(",").map((productId) => ({
+          create: session.metadata?.productIds.split(",").map(productId => ({
             product: {
               connect: { id: productId },
             },

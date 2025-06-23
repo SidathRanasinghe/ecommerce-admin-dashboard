@@ -1,7 +1,8 @@
-import Navbar from "@/components/Navbar";
-import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+
+import Navbar from "@/components/Navbar";
+import prismadb from "@/lib/prismadb";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;

@@ -1,7 +1,8 @@
-import prismadb from "@/lib/prismadb";
-import { stripe } from "@/lib/stripe";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+
+import prismadb from "@/lib/prismadb";
+import { stripe } from "@/lib/stripe";
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -16,7 +17,7 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEB_HOOK_SECRET!
     );
   } catch (error: any) {
-    return new NextResponse("Error with webhook signature: " + error.message, {
+    return new NextResponse(`Error with webhook signature: ${error.message}`, {
       status: 500,
     });
   }

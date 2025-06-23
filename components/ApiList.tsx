@@ -1,6 +1,8 @@
 "use client";
-import { useOrigin } from "@/hooks/useOrigin";
 import { useParams } from "next/navigation";
+
+import { useOrigin } from "@/hooks/useOrigin";
+
 import ApiAlert from "./ui/api-alert";
 
 interface IApiList {

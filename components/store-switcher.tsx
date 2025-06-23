@@ -1,16 +1,20 @@
 "use client";
 import React, { useState } from "react";
-import { PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Store } from "@prisma/client";
-import { useStoreModal } from "@/hooks/useStoreModal";
 import { useParams, useRouter } from "next/navigation";
-import { Popover } from "@/components/ui/popover";
 import {
   Check,
   ChevronsUpDown,
   PlusCircle,
   Store as StoreIcon,
 } from "lucide-react";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { useStoreModal } from "@/hooks/useStoreModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -35,12 +39,12 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
   const storeModal = useStoreModal();
   const params = useParams();
   const router = useRouter();
-  const formattedItems = items.map((item) => ({
+  const formattedItems = items.map(item => ({
     label: item.name,
     value: item.id,
   }));
   const currentStore = formattedItems.find(
-    (item) => item.value === params?.storeId
+    item => item.value === params?.storeId
   );
 
   const onStoreSelect = (store: { value: string; label: string }) => {
@@ -58,9 +62,9 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
           aria-label="select the store"
           className={cn("w-[250px] justify-between", className)}
         >
-          <StoreIcon className="h-4 w-4 mr-4" />
+          <StoreIcon className="mr-4 h-4 w-4" />
           {currentStore?.label}
-          <ChevronsUpDown className="ml-auto w-4 h-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -69,13 +73,13 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
             <CommandInput placeholder="search store.." />
             <CommandEmpty>No store found</CommandEmpty>
             <CommandGroup heading="Available stores">
-              {formattedItems.map((item) => (
+              {formattedItems.map(item => (
                 <CommandItem
                   key={item.value}
                   onSelect={() => onStoreSelect(item)}
-                  className="text-sm cursor-pointer"
+                  className="cursor-pointer text-sm"
                 >
-                  <StoreIcon className="mr-3 w-4 h-4" />
+                  <StoreIcon className="mr-3 h-4 w-4" />
                   <span>{item.label}</span>
                   <Check
                     className={cn(
@@ -99,7 +103,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                   storeModal.onOpen();
                 }}
               >
-                <PlusCircle className="w-5 h-5 mr-3" />
+                <PlusCircle className="mr-3 h-5 w-5" />
                 Create store
               </CommandItem>
             </CommandGroup>

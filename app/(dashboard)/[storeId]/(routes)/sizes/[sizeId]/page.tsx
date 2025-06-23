@@ -1,6 +1,7 @@
+import React from "react";
+
 import SizeForm from "@/components/SizeForm";
 import prismadb from "@/lib/prismadb";
-import React from "react";
 
 const SizePage = async ({ params }: { params: { sizeId: string } }) => {
   const sizes = await prismadb.size.findFirst({

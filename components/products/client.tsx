@@ -1,13 +1,15 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+
 import Heading from "../ui/Heading";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { useParams, useRouter } from "next/navigation";
-import { Columns, ProductColumn } from "./Columns";
 import { DataTable } from "../ui/dataTable";
 import ApiList from "../ApiList";
+
+import { Columns, ProductColumn } from "./Columns";
 
 interface ProductClientProps {
   data: ProductColumn[];
@@ -25,7 +27,7 @@ const ProductClient = ({ data }: ProductClientProps) => {
           description="Manage products for your store"
         />
         <Button onClick={() => router.push(`/${params?.storeId}/products/new`)}>
-          <Plus className="mr-4 w-4 h-4" />
+          <Plus className="mr-4 h-4 w-4" />
           <span>create</span>
         </Button>
       </div>

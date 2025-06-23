@@ -1,9 +1,10 @@
 "use client";
 import { Copy, Server } from "lucide-react";
+import { toast } from "react-hot-toast";
+
 import { Alert, AlertDescription, AlertTitle } from "./alert";
 import { Badge, BadgeProps } from "./badge";
 import { Button } from "./button";
-import { toast } from "react-hot-toast";
 
 interface ApiAlertProps {
   title: string;
@@ -31,8 +32,8 @@ const ApiAlert = ({
   };
   return (
     <Alert className="flex flex-col">
-      <div className="flex space-x-3 flex-row">
-        <Server className="w-4 h-4" />
+      <div className="flex flex-row space-x-3">
+        <Server className="h-4 w-4" />
         <AlertTitle className="flex items-center gap-x-2">
           {title}
           <Badge variant={variantMap[variant]}>{textMap[variant]}</Badge>
@@ -40,7 +41,7 @@ const ApiAlert = ({
       </div>
       <div>
         <AlertDescription className="mt-4 flex items-center justify-between">
-          <code className="relative rounde bg-muted px-[0.3rem] py-[0.2rem] overflow-ellipsis font-mono font-semibold text-sm md:text-base">
+          <code className="rounde bg-muted relative px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold overflow-ellipsis md:text-base">
             {description}
           </code>
           <Button
@@ -48,7 +49,7 @@ const ApiAlert = ({
             onClick={() => onCopy(description)}
             size="sm"
           >
-            <Copy className="w-4 h-4" />
+            <Copy className="h-4 w-4" />
           </Button>
         </AlertDescription>
       </div>

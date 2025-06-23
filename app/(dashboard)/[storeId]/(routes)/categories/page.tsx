@@ -1,7 +1,8 @@
+import { format } from "date-fns";
+
 import CategoryClient from "@/components/categories/CategoryClient";
 import { CategoryColumn } from "@/components/categories/Columns";
 import prismadb from "@/lib/prismadb";
-import { format } from "date-fns";
 
 const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   const categories = await prismadb.category.findMany({

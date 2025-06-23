@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Category, Image, Product, Size } from "@prisma/client";
-import Heading from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -18,10 +20,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/ui/Heading";
+
+import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
 import ImageUpload from "./ui/ImageUpload";
 import {
@@ -139,7 +141,7 @@ const ProductForm = ({
       <Separator />
       <Form {...form}>
         <form
-          className="space-y-8 w-full"
+          className="w-full space-y-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
@@ -150,14 +152,12 @@ const ProductForm = ({
                 <FormLabel>Images</FormLabel>
                 <FormControl>
                   <ImageUpload
-                    values={field.value?.map((image) => image.url)}
+                    values={field.value?.map(image => image.url)}
                     disabled={isLoading}
-                    onChange={(url) =>
-                      field.onChange([...field.value, { url }])
-                    }
-                    onRemove={(url) =>
+                    onChange={url => field.onChange([...field.value, { url }])}
+                    onRemove={url =>
                       field.onChange([
-                        ...field.value.filter((item) => item.url !== url),
+                        ...field.value.filter(item => item.url !== url),
                       ])
                     }
                   />
@@ -166,7 +166,7 @@ const ProductForm = ({
               </FormItem>
             )}
           />
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-3">
             <FormField
               control={form.control}
               name="name"
@@ -218,7 +218,7 @@ const ProductForm = ({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {categories.map((category) => (
+                      {categories.map(category => (
                         <SelectItem value={category.id} key={category.id}>
                           {category.name}
                         </SelectItem>
@@ -250,7 +250,7 @@ const ProductForm = ({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {sizes.map((size) => (
+                      {sizes.map(size => (
                         <SelectItem value={size.id} key={size.id}>
                           {size.name}
                         </SelectItem>
@@ -265,7 +265,7 @@ const ProductForm = ({
               control={form.control}
               name="isFeatured"
               render={({ field }) => (
-                <FormItem className="flex items-start flex-row space-x-3 space-y-0 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4">
                   <FormControl>
                     <Checkbox onCheckedChange={field.onChange} />
                   </FormControl>
@@ -282,7 +282,7 @@ const ProductForm = ({
               control={form.control}
               name="isArchived"
               render={({ field }) => (
-                <FormItem className="flex items-start flex-row space-x-3 space-y-0 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4">
                   <FormControl>
                     <Checkbox onCheckedChange={field.onChange} />
                   </FormControl>

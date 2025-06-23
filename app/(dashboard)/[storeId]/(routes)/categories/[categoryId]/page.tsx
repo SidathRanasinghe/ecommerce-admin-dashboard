@@ -1,8 +1,7 @@
-import BillboardForm from "@/components/BillboardForm";
 import CategoryForm from "@/components/CategoryForm";
 import prismadb from "@/lib/prismadb";
+
 import {} from "@prisma/client";
-import React from "react";
 
 const CategoryPage = async ({
   params,
