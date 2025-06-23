@@ -35,14 +35,14 @@ export async function POST(
   });
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
-  products.forEach((item) => {
+  products.forEach(item => {
     line_items.push({
       quantity: 1,
       price_data: {
         currency: "USD",
         product_data: {
           name: item.name,
-          images: item.images.map((image) => image.url),
+          images: item.images.map(image => image.url),
         },
         unit_amount: Number(item.price) * 100,
       },

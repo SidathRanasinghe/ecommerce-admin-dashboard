@@ -32,12 +32,18 @@ export async function POST(req: Request) {
     address?.state,
   ];
 
-  const addressStr = addressValue.filter((add) => add !== null).join(", ");
+  const addressStr = addressValue.filter(add => add !== null).join(", ");
 
   if (event.type === "checkout.session.completed") {
+    const orderId = session?.metadata?.orderId;
+    if (!orderId) {
+      return new NextResponse("Order ID is missing in session metadata", {
+        status: 400,
+      });
+    }
     const order = await prismadb.order.update({
       where: {
-        id: session?.metadata?.orderId,
+        id: orderId,
       },
       data: {
         isPaid: true,
