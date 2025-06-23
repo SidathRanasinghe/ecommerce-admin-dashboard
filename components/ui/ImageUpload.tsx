@@ -35,16 +35,16 @@ const ImageUpload = ({
         {values?.map(url => (
           <div
             key={url}
-            className="relative h-[200px] w-[200px] overflow-hidden rounded-md"
+            className="relative size-[200px] overflow-hidden rounded-md"
           >
-            <div className="absolute top-2 right-2 z-10">
+            <div className="absolute right-2 top-2 z-10">
               <Button
                 type="button"
                 onClick={() => onRemove(url)}
                 size="icon"
                 variant="destructive"
               >
-                <Trash className="h-4 w-4" />
+                <Trash className="size-4" />
               </Button>
             </div>
             <Image src={url} alt="cover image" className="object-cover" fill />
@@ -63,7 +63,7 @@ const ImageUpload = ({
               onClick={onClick}
               variant="secondary"
             >
-              <ImagePlus className="mr-2 h-5 w-5" />
+              <ImagePlus className="mr-2 size-5" />
               <span>Upload image</span>
             </Button>
           );

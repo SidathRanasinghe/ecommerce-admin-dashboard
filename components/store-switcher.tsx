@@ -62,9 +62,9 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
           aria-label="select the store"
           className={cn("w-[250px] justify-between", className)}
         >
-          <StoreIcon className="mr-4 h-4 w-4" />
+          <StoreIcon className="mr-4 size-4" />
           {currentStore?.label}
-          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className="ml-auto size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -79,7 +79,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                   onSelect={() => onStoreSelect(item)}
                   className="cursor-pointer text-sm"
                 >
-                  <StoreIcon className="mr-3 h-4 w-4" />
+                  <StoreIcon className="mr-3 size-4" />
                   <span>{item.label}</span>
                   <Check
                     className={cn(
@@ -103,7 +103,7 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
                   storeModal.onOpen();
                 }}
               >
-                <PlusCircle className="mr-3 h-5 w-5" />
+                <PlusCircle className="mr-3 size-5" />
                 Create store
               </CommandItem>
             </CommandGroup>

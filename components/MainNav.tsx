@@ -64,7 +64,7 @@ const MainNav = ({ className }: React.HTMLAttributes<HTMLElement>) => {
               key={route.href}
               href={route.href}
               className={cn(
-                "hover:text-primary text-sm font-medium transition-colors",
+                "text-sm font-medium transition-colors hover:text-primary",
                 route.active
                   ? "text-black dark:text-white"
                   : "text-muted-foreground"
@@ -124,10 +124,10 @@ const MainNav = ({ className }: React.HTMLAttributes<HTMLElement>) => {
                 <Menu size={25} color="black" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="fixed inset-0 z-40 h-full w-full max-w-none border-0 bg-transparent p-0 lg:hidden">
+            <DialogContent className="fixed inset-0 z-40 size-full max-w-none border-0 bg-transparent p-0 lg:hidden">
               <div className="fixed inset-0 bg-black/25" />
               <div className="fixed inset-0 flex">
-                <div className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-6 pb-4 shadow-xl">
+                <div className="relative ml-auto flex size-full max-w-xs flex-col overflow-y-auto bg-white py-6 pb-4 shadow-xl">
                   <div className="flex items-center justify-end px-4">
                     <IconButton icon={<X size={20} />} onClick={onClose} />
                   </div>
@@ -141,7 +141,7 @@ const MainNav = ({ className }: React.HTMLAttributes<HTMLElement>) => {
                         key={route.href}
                         href={route.href}
                         className={cn(
-                          "hover:text-primary text-xl font-medium transition-colors",
+                          "text-xl font-medium transition-colors hover:text-primary",
                           route.active
                             ? "text-black dark:text-white"
                             : "text-muted-foreground"

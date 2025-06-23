@@ -116,7 +116,7 @@ const CategoryForm = ({ initialData, billboards }: CategoryFormProps) => {
             onClick={() => setIsOpen(true)}
             size="sm"
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="size-4" />
           </Button>
         )}
       </div>

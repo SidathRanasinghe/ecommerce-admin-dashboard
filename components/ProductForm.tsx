@@ -134,7 +134,7 @@ const ProductForm = ({
             onClick={() => setIsOpen(true)}
             size="sm"
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="size-4" />
           </Button>
         )}
       </div>
@@ -265,7 +265,7 @@ const ProductForm = ({
               control={form.control}
               name="isFeatured"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
                     <Checkbox onCheckedChange={field.onChange} />
                   </FormControl>
@@ -282,7 +282,7 @@ const ProductForm = ({
               control={form.control}
               name="isArchived"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-y-0 space-x-3 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
                     <Checkbox onCheckedChange={field.onChange} />
                   </FormControl>

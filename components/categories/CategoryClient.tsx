@@ -29,7 +29,7 @@ const CategoryClient = ({ data }: CategoryProps) => {
         <Button
           onClick={() => router.push(`/${params?.storeId}/categories/new`)}
         >
-          <Plus className="mr-4 h-4 w-4" />
+          <Plus className="mr-4 size-4" />
           <span>create</span>
         </Button>
       </div>
