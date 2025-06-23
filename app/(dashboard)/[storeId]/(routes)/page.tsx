@@ -1,40 +1,41 @@
+import { CreditCard, DollarSign, Package } from "lucide-react";
+
 import {
-  getGraphRevenue,
+  // getGraphRevenue,
   getStockSize,
   getTotalRevenue,
   getTotalSales,
 } from "@/actions/actions";
-import Overview from "@/components/Overview";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { priceFormat } from "@/lib/utils";
-import { CreditCard, DollarSign, Package } from "lucide-react";
 
 interface DashboardPageProps {
-  params: { storeId: string };
+  params: Promise<{ storeId: string }>;
 }
 
 const DashboardPage = async ({ params }: DashboardPageProps) => {
-  const revenue = await getTotalRevenue(params.storeId);
-  const salesCount = await getTotalSales(params.storeId);
-  const stockCount = await getStockSize(params.storeId);
-  const graphData = await getGraphRevenue(params.storeId);
+  const { storeId } = await params;
+  const revenue = await getTotalRevenue(storeId);
+  const salesCount = await getTotalSales(storeId);
+  const stockCount = await getStockSize(storeId);
+  // const graphData = await getGraphRevenue(storeId);
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">
         <Heading title="Dashboard" description="Overview of your store" />
         <Separator />
-        <div className="grid gap-4 grid-cols-3">
+        <div className="grid grid-cols-3 gap-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Total revenue
               </CardTitle>
-              <DollarSign className="text-muted-foreground w-4 h-4" />
+              <DollarSign className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <p className="text-sm lg:text-2xl font-bold">
+              <p className="text-sm font-bold lg:text-2xl">
                 {priceFormat.format(revenue)}
               </p>
             </CardContent>
@@ -44,10 +45,10 @@ const DashboardPage = async ({ params }: DashboardPageProps) => {
               <CardTitle className="text-sm font-medium">
                 Number of sales
               </CardTitle>
-              <CreditCard className="text-muted-foreground w-4 h-4" />
+              <CreditCard className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <p className="text-sm lg:text-2xl font-bold">{salesCount}</p>
+              <p className="text-sm font-bold lg:text-2xl">{salesCount}</p>
             </CardContent>
           </Card>
           <Card>
@@ -55,10 +56,10 @@ const DashboardPage = async ({ params }: DashboardPageProps) => {
               <CardTitle className="text-sm font-medium">
                 Products In stock
               </CardTitle>
-              <Package className="text-muted-foreground w-4 h-4" />
+              <Package className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <p className="text-sm lg:text-2xl font-bold">{stockCount}</p>
+              <p className="text-sm font-bold lg:text-2xl">{stockCount}</p>
             </CardContent>
           </Card>
         </div>

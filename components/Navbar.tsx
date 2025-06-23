@@ -1,19 +1,19 @@
-import { UserButton, auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import React from "react";
-import MainNav from "./MainNav";
-import StoreSwitcher from "@/components/store-switcher";
 import { redirect } from "next/navigation";
+
+import StoreSwitcher from "@/components/store-switcher";
 import prismadb from "@/lib/prismadb";
 
+import MainNav from "./MainNav";
+
 const Navbar = async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   if (!userId) {
     redirect("/sign-in");
   }
   const stores = await prismadb.store.findMany({
-    where: {
-      userId,
-    },
+    where: { userId },
   });
   return (
     <div className="border-b py-2">

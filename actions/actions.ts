@@ -89,7 +89,10 @@ export const getGraphRevenue = async (storeId: string) => {
   ];
 
   for (const month in monthlyOrder) {
-    graphData[parseInt(month)].total = monthlyOrder[parseInt(month)];
+    const monthIndex = parseInt(month);
+    if (!isNaN(monthIndex) && graphData[monthIndex]) {
+      graphData[monthIndex].total = monthlyOrder[monthIndex] ?? 0;
+    }
   }
 
   return graphData;

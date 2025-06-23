@@ -1,22 +1,25 @@
-import SizeForm from '@/components/SizeForm';
-import prismadb from '@/lib/prismadb'
-import React from 'react'
+import React from "react";
 
-const SizePage = async ({params}: {params: {sizeId: string}}) => {
-  
-  const sizes =  await prismadb.size.findFirst({
-    where: {
-      id: params.sizeId
-    }
-  })
+import SizeForm from "@/components/SizeForm";
+import prismadb from "@/lib/prismadb";
+
+interface SizePageProps {
+  params: Promise<{ sizeId: string }>;
+}
+
+const SizePage = async ({ params }: SizePageProps) => {
+  const { sizeId } = await params;
+  const sizes = await prismadb.size.findFirst({
+    where: { id: sizeId },
+  });
 
   return (
-    <div className='flex-col'>
-      <div className="space-y-4 flex-1 p-8">
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8">
         <SizeForm initialData={sizes} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SizePage
+export default SizePage;

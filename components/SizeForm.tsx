@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Size } from "@prisma/client";
-import Heading from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -17,10 +19,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/common/Heading";
+
+import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
 
 interface SizeFormProps {
@@ -65,6 +67,7 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("SizeForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -78,6 +81,7 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success("size deleted!");
     } catch (error) {
+      console.error("SizeForm: onDelete: Error: ", error);
       toast.error("You can't delete sizes with categories and products");
     } finally {
       setIsLoading(false);
@@ -101,17 +105,17 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
             onClick={() => setIsOpen(true)}
             size="sm"
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="size-4" />
           </Button>
         )}
       </div>
       <Separator />
       <Form {...form}>
         <form
-          className="space-y-8 w-full"
+          className="w-full space-y-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-3">
             <FormField
               control={form.control}
               name="name"

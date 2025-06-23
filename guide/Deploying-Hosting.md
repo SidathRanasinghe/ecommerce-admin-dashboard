@@ -1,4 +1,6 @@
-Great! Let me break down the deployment options for your Next.js ecommerce admin dashboard. Since this is a full-stack application with API routes, database, and server-side functionality, not all platforms will work.
+Great! Let me break down the deployment options for your Next.js ecommerce admin
+dashboard. Since this is a full-stack application with API routes, database, and
+server-side functionality, not all platforms will work.
 
 ## **✅ RECOMMENDED PLATFORMS (Full-Stack Support)**
 
@@ -123,8 +125,8 @@ git push origin main
 - Select your GitHub repository
 - Vercel auto-detects Next.js settings
 
-**4. Add Environment Variables:**
-In Vercel dashboard → Settings → Environment Variables:
+**4. Add Environment Variables:** In Vercel dashboard → Settings → Environment
+Variables:
 
 ```
 DATABASE_URL=mongodb+srv://...
@@ -208,4 +210,6 @@ FRONTEND_STORE_URL=https://your-store-frontend.vercel.app
 4. Easy scaling when you grow
 5. Built-in analytics and monitoring
 
-Would you like me to walk you through the Vercel deployment process step-by-step, or do you need help configuring any specific part of the deployment?
+Would you like me to walk you through the Vercel deployment process
+step-by-step, or do you need help configuring any specific part of the
+deployment?

@@ -2,16 +2,20 @@
 
 ---
 
-Based on your code files, I now have a clear understanding of your project. Let me break down everything for you:
+Based on your code files, I now have a clear understanding of your project. Let
+me break down everything for you:
 
 ## What This Project Is
 
-This is a **multi-tenant e-commerce admin dashboard** built with Next.js 13+ (App Router). It's designed to manage multiple online stores from a single dashboard. Here's what it provides:
+This is a **multi-tenant e-commerce admin dashboard** built with Next.js 13+
+(App Router). It's designed to manage multiple online stores from a single
+dashboard. Here's what it provides:
 
 ### Key Features:
 
 - **Multi-store management**: One user can manage multiple stores
-- **Product management**: Create, edit, delete products with images, categories, and sizes
+- **Product management**: Create, edit, delete products with images, categories,
+  and sizes
 - **Order management**: Track sales, revenue, and order history
 - **Dashboard analytics**: Revenue charts, sales counts, stock levels
 - **User authentication**: Secure login/signup with Clerk
@@ -48,14 +52,14 @@ npm install
 ```
 
 2. **Environment setup:**
-
    - Copy `.env.example` to `.env.local`
    - Fill in all the required environment variables:
      - **Clerk**: Create account at clerk.com, get API keys
      - **MongoDB**: Set up MongoDB Atlas, get connection string
      - **Cloudinary**: Create account, get cloud name
      - **Stripe**: Create account, get API keys and webhook secret
-     - **Store URL**: Your frontend store URL (if you have a separate customer-facing store)
+     - **Store URL**: Your frontend store URL (if you have a separate
+       customer-facing store)
 
 3. **Database setup:**
 
@@ -88,19 +92,16 @@ GitHub Pages only supports static sites. Your app requires:
 ### ✅ Recommended Deployment Platforms:
 
 1. **Vercel** (Best option for Next.js):
-
    - Free tier available
    - Automatic deployments from GitHub
    - Built-in support for Next.js
    - Easy environment variable management
 
 2. **Netlify**:
-
    - Good Next.js support
    - Free tier available
 
 3. **Railway**:
-
    - Full-stack deployment
    - Database hosting included
 
@@ -160,7 +161,8 @@ Before republishing, consider these enhancements:
 
 Go to your GitHub repository page and add:
 
-- **Description**: "A modern, full-stack e-commerce admin dashboard for managing multiple online stores with analytics, inventory, and payment processing."
+- **Description**: "A modern, full-stack e-commerce admin dashboard for managing
+  multiple online stores with analytics, inventory, and payment processing."
 - **Website**: Add your deployed URL when ready
 - **Topics**: Add the tags mentioned above
 

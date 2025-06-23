@@ -35,14 +35,14 @@ export async function POST(
   });
 
   const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
-  products.forEach((item) => {
+  products.forEach(item => {
     line_items.push({
       quantity: 1,
       price_data: {
         currency: "USD",
         product_data: {
           name: item.name,
-          images: item.images.map((image) => image.url),
+          images: item.images.map(image => image.url),
         },
         unit_amount: Number(item.price) * 100,
       },
@@ -86,6 +86,10 @@ export async function POST(
     });
     return NextResponse.json({ url: session.url }, { headers: corsHeaders });
   } catch (error) {
+    console.error(
+      "app/api/[storeId]/checkout/route.ts ::: POST ::: Error : ",
+      error
+    );
     return new NextResponse("Failed to create create a payment", {
       status: 500,
       statusText: "server error",

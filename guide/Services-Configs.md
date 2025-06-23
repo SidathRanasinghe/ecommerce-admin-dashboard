@@ -1,4 +1,6 @@
-Looking at your ecommerce admin dashboard project, I can see you're using several third-party services. Let me break down how to get the API keys and configuration for each service, along with their pricing details:
+Looking at your ecommerce admin dashboard project, I can see you're using
+several third-party services. Let me break down how to get the API keys and
+configuration for each service, along with their pricing details:
 
 ## 1. **Clerk (Authentication)**
 
@@ -46,6 +48,16 @@ STRIPE_WEBHOOK_SECRET=whsec_... (for webhook endpoints)
 - **No monthly fees** for the platform
 - **Transaction fees:** 2.9% + 30¢ per successful card charge
 - No free trial limit - you only pay when you actually process payments
+
+ex:
+
+sidath@sidathpc:~/Academy/Projects/GitHost/NextJS/ecommerce-dashboard$ stripe
+listen --forward-to localhost:3000/api/webhook
+
+> Ready! You are using Stripe API Version [2025-05-28.basil]. Your webhook
+> signing secret is
+> whsec_db1a1b564ec957ab8339a530d185ef5e66008e2bc407b36d834f05170580f7ae (^C to
+> quit)
 
 ## 3. **Prisma + Database (MongoDB/PostgreSQL)**
 

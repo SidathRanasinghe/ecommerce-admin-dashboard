@@ -1,38 +1,35 @@
-import BillboardForm from '@/components/BillboardForm';
-import ProductForm from '@/components/ProductForm';
-import prismadb from '@/lib/prismadb'
-import {} from '@prisma/client';
-import React from 'react'
+import ProductForm from "@/components/ProductForm";
+import prismadb from "@/lib/prismadb";
 
-const ProductPage = async ({params}: {params: {productId: string, storeId: string}}) => {
-  
-  const product =  await prismadb.product.findFirst({
-    where: {
-      id: params.productId
-    },
-    include: {
-      images: true
-    }
-  })
-
-  const categories = await prismadb.category.findMany({
-    where : {
-      storeId: params.storeId
-    }
-  })
-  const sizes = await prismadb.size.findMany({
-    where : {
-      storeId: params.storeId
-    }
-  })
-
-  return (
-    <div className='flex-col'>
-      <div className="space-y-4 flex-1 p-8">
-        <ProductForm initialData={product} categories={categories} sizes={sizes} />
-      </div>
-    </div>
-  )
+interface ProductPageProps {
+  params: Promise<{ productId: string; storeId: string }>;
 }
 
-export default ProductPage
+const ProductPage = async ({ params }: ProductPageProps) => {
+  const { productId, storeId } = await params;
+  const product = await prismadb.product.findFirst({
+    where: { id: productId },
+    include: { images: true },
+  });
+
+  const categories = await prismadb.category.findMany({
+    where: { storeId },
+  });
+  const sizes = await prismadb.size.findMany({
+    where: { storeId },
+  });
+
+  return (
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8">
+        <ProductForm
+          initialData={product}
+          categories={categories}
+          sizes={sizes}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ProductPage;

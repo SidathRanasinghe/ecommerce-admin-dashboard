@@ -1,33 +1,29 @@
+import { format } from "date-fns";
+
 import { OrderColumn } from "@/components/orders/Columns";
 import OrderClient from "@/components/orders/client";
 import prismadb from "@/lib/prismadb";
-import { format } from "date-fns";
 
-const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
+interface OrdersPageProps {
+  params: Promise<{ storeId: string }>;
+}
+
+const OrdersPage = async ({ params }: OrdersPageProps) => {
+  const { storeId } = await params;
   const orders = await prismadb.order.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-    include: {
-      orderItems: {
-        include: {
-          product: true,
-        },
-      },
-    },
+    where: { storeId },
+    include: { orderItems: { include: { product: true } } },
     take: 20,
-    orderBy: {
-      createdAt: "desc",
-    },
+    orderBy: { createdAt: "desc" },
   });
 
-  const formattedOrders: OrderColumn[] = orders.map((order) => ({
+  const formattedOrders: OrderColumn[] = orders.map(order => ({
     id: order.id,
     phone: order.phone,
     address: order.address,
     isPaid: order.isPaid,
     products: order.orderItems
-      .map((orderItem) => orderItem.product.name)
+      .map(orderItem => orderItem.product.name)
       .join(", "),
     totalPrice: order.orderItems.reduce(
       (acc, orderItem) => acc + orderItem.product.price,
