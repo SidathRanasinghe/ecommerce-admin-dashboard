@@ -76,7 +76,7 @@ export default tseslint.config(
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
-      "@typescript-eslint/prefer-const": "error",
+
       "@typescript-eslint/no-non-null-assertion": "warn",
 
       // React rules
