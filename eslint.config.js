@@ -6,6 +6,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
+import tailwindcss from "eslint-plugin-tailwindcss";
 
 import prettier from "eslint-config-prettier";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -61,6 +62,7 @@ export default tseslint.config(
       "react-refresh": reactRefresh,
       "jsx-a11y": jsxA11y,
       import: importPlugin,
+      tailwindcss,
     },
     rules: {
       // TypeScript recommended rules
@@ -76,7 +78,6 @@ export default tseslint.config(
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
-
       "@typescript-eslint/no-non-null-assertion": "warn",
 
       // React rules
@@ -143,6 +144,15 @@ export default tseslint.config(
       ],
       "import/no-unresolved": "off",
 
+      // Tailwind CSS rules
+      "tailwindcss/classnames-order": "warn",
+      "tailwindcss/enforces-negative-arbitrary-values": "warn",
+      "tailwindcss/enforces-shorthand": "warn",
+      "tailwindcss/migration-from-tailwind-2": "warn",
+      "tailwindcss/no-arbitrary-value": "off",
+      "tailwindcss/no-custom-classname": "off",
+      "tailwindcss/no-contradicting-classname": "error",
+
       // General rules
       "no-console": ["warn", { allow: ["warn", "error"] }],
       "no-debugger": "error",
@@ -168,6 +178,16 @@ export default tseslint.config(
         },
         node: true,
       },
+      tailwindcss: {
+        config: "./tailwind.config.js",
+        cssFiles: [
+          "**/*.css",
+          "!**/node_modules",
+          "!**/.*",
+          "!**/dist",
+          "!**/build",
+        ],
+      },
     },
   },
 
@@ -187,6 +207,7 @@ export default tseslint.config(
     rules: {
       "@typescript-eslint/no-var-requires": "off",
       "no-console": "off",
+      "tailwindcss/no-custom-classname": "off",
     },
   }
 );
