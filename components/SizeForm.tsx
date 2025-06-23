@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 
 import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
@@ -67,6 +67,7 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("SizeForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -80,6 +81,7 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
       router.push(`/${params.storeId}/sizes`);
       toast.success("size deleted!");
     } catch (error) {
+      console.error("SizeForm: onDelete: Error: ", error);
       toast.error("You can't delete sizes with categories and products");
     } finally {
       setIsLoading(false);

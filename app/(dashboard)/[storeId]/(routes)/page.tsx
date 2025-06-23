@@ -6,7 +6,7 @@ import {
   getTotalRevenue,
   getTotalSales,
 } from "@/actions/actions";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { priceFormat } from "@/lib/utils";

@@ -21,11 +21,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 
 import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
-import ImageUpload from "./ui/ImageUpload";
+import ImageUpload from "./common/ImageUpload";
 import {
   Select,
   SelectContent,
@@ -98,6 +98,7 @@ const ProductForm = ({
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("ProductForm: onSubmit: Error: ", error);
       toast.error("Failed to to save product");
     } finally {
       setIsLoading(false);
@@ -111,6 +112,7 @@ const ProductForm = ({
       router.push(`/${params.storeId}/products`);
       toast.success("product deleted!");
     } catch (error) {
+      console.error("ProductForm: onDelete: Error: ", error);
       toast.error("Failed to delete product");
     } finally {
       setIsLoading(false);

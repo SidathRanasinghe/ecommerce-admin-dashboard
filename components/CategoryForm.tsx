@@ -21,7 +21,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 
 import AlertModal from "./modals/alertModal";
 import { Separator } from "./ui/separator";
@@ -78,6 +78,7 @@ const CategoryForm = ({ initialData, billboards }: CategoryFormProps) => {
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("CategoryForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -93,6 +94,7 @@ const CategoryForm = ({ initialData, billboards }: CategoryFormProps) => {
       router.push(`/${params.storeId}/categories`);
       toast.success("category deleted!");
     } catch (error) {
+      console.error("CategoryForm: onDelete: Error: ", error);
       toast.error("You can't delete a category containing products");
     } finally {
       setIsLoading(false);

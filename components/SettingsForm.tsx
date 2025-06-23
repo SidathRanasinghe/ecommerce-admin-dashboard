@@ -20,12 +20,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 import { useOrigin } from "@/hooks/useOrigin";
 
 import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
-import ApiAlert from "./ui/api-alert";
+import ApiAlert from "./common/api-alert";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -53,6 +53,7 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
       router.refresh();
       toast.success("changes saved successfully");
     } catch (error) {
+      console.error("SettingsForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -66,6 +67,7 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
       router.push("/");
       toast.success("store deleted!");
     } catch (error) {
+      console.error("SettingsForm: onDelete: Error: ", error);
       toast.error("Make sure you don't have products and categories first");
     } finally {
       setIsLoading(false);

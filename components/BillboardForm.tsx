@@ -20,11 +20,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import Heading from "@/components/ui/Heading";
+import Heading from "@/components/common/Heading";
 
 import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
-import ImageUpload from "./ui/ImageUpload";
+import ImageUpload from "./common/ImageUpload";
 
 interface BillboardFormProps {
   initialData: Billboard | null;
@@ -70,6 +70,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("BillboardForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -85,6 +86,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
       router.push(`/${params.storeId}/billboards`);
       toast.success("billboard deleted!");
     } catch (error) {
+      console.error("BillboardForm: onDelete: Error: ", error);
       toast.error("You can't delete billboard with categories and products");
     } finally {
       setIsLoading(false);

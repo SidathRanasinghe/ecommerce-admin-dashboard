@@ -3,7 +3,7 @@ import { useParams } from "next/navigation";
 
 import { useOrigin } from "@/hooks/useOrigin";
 
-import ApiAlert from "./ui/api-alert";
+import ApiAlert from "./common/api-alert";
 
 interface IApiList {
   entityName: string;

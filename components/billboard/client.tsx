@@ -3,10 +3,10 @@
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
-import Heading from "../ui/Heading";
+import Heading from "../common/Heading";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { DataTable } from "../ui/dataTable";
+import { DataTable } from "../common/dataTable";
 import ApiList from "../ApiList";
 
 import { BillboardColumn, Columns } from "./Columns";

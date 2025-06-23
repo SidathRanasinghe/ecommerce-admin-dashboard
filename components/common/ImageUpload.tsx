@@ -5,7 +5,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
 
-import { Button } from "./button";
+import { Button } from "../ui/button";
 
 interface ImageUploadProps {
   onChange: (value: string) => void;
@@ -20,6 +20,7 @@ const ImageUpload = ({
   onRemove,
 }: ImageUploadProps) => {
   const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
