@@ -37,7 +37,7 @@ export async function POST(
     });
     return NextResponse.json(category);
   } catch (error) {
-    //console.log('CATEGORY_POST', error);
+    console.error("CATEGORY_POST", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -56,7 +56,7 @@ export async function GET(
     });
     return NextResponse.json(categories);
   } catch (error) {
-    // console.log('BILLIBORDS_POST', error);
+    console.error("BILLIBORDS_POST", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

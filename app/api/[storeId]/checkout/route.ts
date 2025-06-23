@@ -86,6 +86,10 @@ export async function POST(
     });
     return NextResponse.json({ url: session.url }, { headers: corsHeaders });
   } catch (error) {
+    console.error(
+      "app/api/[storeId]/checkout/route.ts ::: POST ::: Error : ",
+      error
+    );
     return new NextResponse("Failed to create create a payment", {
       status: 500,
       statusText: "server error",

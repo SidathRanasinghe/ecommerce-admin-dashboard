@@ -36,21 +36,22 @@ export async function PATCH(
     if (!storeByUserId)
       return new NextResponse("Unauthorized", { status: 403 });
 
-    const size = await prismadb.size.updateMany({
-      where: {
-        id: params.sizeId,
-      },
-      data: {
-        name,
-        value,
-      },
-    });
+    // const size = await prismadb.size.updateMany({
+    //   where: {
+    //     id: params.sizeId,
+    //   },
+    //   data: {
+    //     name,
+    //     value,
+    //   },
+    // });
+
     return new NextResponse("Updated Successfully", {
       status: 201,
       statusText: "Ok",
     });
   } catch (error) {
-    console.log("BILLBOARD_PATCH :", error);
+    console.error("BILLBOARD_PATCH :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -80,18 +81,18 @@ export async function DELETE(
     if (!storeByUserId)
       return new NextResponse("Unauthorized", { status: 403 });
 
-    const res = await prismadb.size.deleteMany({
-      where: {
-        id: params.sizeId,
-      },
-    });
+    // const res = await prismadb.size.deleteMany({
+    //   where: {
+    //     id: params.sizeId,
+    //   },
+    // });
 
     return new NextResponse("deleted Successfully", {
       status: 201,
       statusText: "Ok",
     });
   } catch (error) {
-    //console.log('BILLBORD_DELETE :', error);
+    console.error("BILLBORD_DELETE :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -111,7 +112,7 @@ export async function GET(
     });
     return NextResponse.json(size);
   } catch (error) {
-    //console.log('[BILLBORD_GET] :', error);
+    console.error("[BILLBORD_GET] :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

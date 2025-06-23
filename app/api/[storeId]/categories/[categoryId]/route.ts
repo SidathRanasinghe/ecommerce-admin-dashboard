@@ -47,7 +47,7 @@ export async function PATCH(
     });
     return NextResponse.json(category);
   } catch (error) {
-    console.log("BILLBOARD_PATCH :", error);
+    console.error("BILLBOARD_PATCH :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -85,7 +85,7 @@ export async function DELETE(
 
     return NextResponse.json(res);
   } catch (error) {
-    //console.log('BILLBORD_DELETE :', error);
+    console.error("BILLBORD_DELETE :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -108,7 +108,7 @@ export async function GET(
     });
     return NextResponse.json(category);
   } catch (error) {
-    //console.log('[BILLBORD_GET] :', error);
+    console.error("[BILLBORD_GET] :", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

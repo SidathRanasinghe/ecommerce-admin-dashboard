@@ -31,7 +31,7 @@ export async function PATCH(
     });
     return NextResponse.json(store);
   } catch (error) {
-    console.log("PATCH error:", error);
+    console.error("PATCH error:", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -57,7 +57,7 @@ export async function DELETE(
     });
     return NextResponse.json(store);
   } catch (error) {
-    console.log("DELETE error:", error);
+    console.error("DELETE error:", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
