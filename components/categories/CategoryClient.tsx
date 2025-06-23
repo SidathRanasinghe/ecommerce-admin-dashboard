@@ -1,12 +1,14 @@
 "use client";
 
 import { Plus } from "lucide-react";
-import Heading from "../ui/Heading";
+import { useParams, useRouter } from "next/navigation";
+
+import Heading from "../common/Heading";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { useParams, useRouter } from "next/navigation";
-import { DataTable } from "../ui/dataTable";
+import { DataTable } from "../common/dataTable";
 import ApiList from "../ApiList";
+
 import { CategoryColumn, Columns } from "./Columns";
 
 interface CategoryProps {
@@ -27,7 +29,7 @@ const CategoryClient = ({ data }: CategoryProps) => {
         <Button
           onClick={() => router.push(`/${params?.storeId}/categories/new`)}
         >
-          <Plus className="mr-4 w-4 h-4" />
+          <Plus className="mr-4 size-4" />
           <span>create</span>
         </Button>
       </div>

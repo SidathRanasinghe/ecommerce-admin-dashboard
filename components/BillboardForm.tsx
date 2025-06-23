@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { z } from "zod";
-import { Billboard, Store } from "@prisma/client";
-import Heading from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
+import { Billboard } from "@prisma/client";
 import { Trash } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -17,12 +19,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/common/Heading";
+
+import { Separator } from "./ui/separator";
 import AlertModal from "./modals/alertModal";
-import ImageUpload from "./ui/ImageUpload";
+import ImageUpload from "./common/ImageUpload";
 
 interface BillboardFormProps {
   initialData: Billboard | null;
@@ -68,6 +70,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
+      console.error("BillboardForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -83,6 +86,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
       router.push(`/${params.storeId}/billboards`);
       toast.success("billboard deleted!");
     } catch (error) {
+      console.error("BillboardForm: onDelete: Error: ", error);
       toast.error("You can't delete billboard with categories and products");
     } finally {
       setIsLoading(false);
@@ -106,14 +110,14 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
             onClick={() => setIsOpen(true)}
             size="sm"
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="size-4" />
           </Button>
         )}
       </div>
       <Separator />
       <Form {...form}>
         <form
-          className="space-y-8 w-full"
+          className="w-full space-y-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
@@ -126,7 +130,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
                   <ImageUpload
                     values={field.value ? [field.value] : []}
                     disabled={isLoading}
-                    onChange={(url) => field.onChange(url)}
+                    onChange={url => field.onChange(url)}
                     onRemove={() => field.onChange("")}
                   />
                 </FormControl>
@@ -134,7 +138,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
               </FormItem>
             )}
           />
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-3">
             <FormField
               control={form.control}
               name="label"

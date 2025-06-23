@@ -1,7 +1,9 @@
 "use client";
-import { useOrigin } from "@/hooks/useOrigin";
 import { useParams } from "next/navigation";
-import ApiAlert from "./ui/api-alert";
+
+import { useOrigin } from "@/hooks/useOrigin";
+
+import ApiAlert from "./common/api-alert";
 
 interface IApiList {
   entityName: string;

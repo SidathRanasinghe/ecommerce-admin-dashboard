@@ -1,13 +1,15 @@
 "use client";
 
 import { Plus } from "lucide-react";
-import Heading from "../ui/Heading";
+import { useParams, useRouter } from "next/navigation";
+
+import Heading from "../common/Heading";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { useParams, useRouter } from "next/navigation";
-import { SizeColumn, Columns } from "./Columns";
-import { DataTable } from "../ui/dataTable";
+import { DataTable } from "../common/dataTable";
 import ApiList from "../ApiList";
+
+import { SizeColumn, Columns } from "./Columns";
 
 interface SizeClientProps {
   data: SizeColumn[];
@@ -25,7 +27,7 @@ const SizeClient = ({ data }: SizeClientProps) => {
           description="Manage sizes for your category"
         />
         <Button onClick={() => router.push(`/${params?.storeId}/sizes/new`)}>
-          <Plus className="mr-4 w-4 h-4" />
+          <Plus className="mr-4 size-4" />
           <span>create</span>
         </Button>
       </div>

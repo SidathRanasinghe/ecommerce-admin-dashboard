@@ -1,21 +1,24 @@
-import Heading from "../ui/Heading";
+import Heading from "../common/Heading";
 import { Separator } from "../ui/separator";
+import { DataTable } from "../common/dataTable";
+
 import { OrderColumn, Columns } from "./Columns";
-import { DataTable } from "../ui/dataTable";
 
 interface OrderClientProps {
-  data: OrderColumn[]
+  data: OrderColumn[];
 }
 
-const OrderClient = ({data}: OrderClientProps) => {
-    
+const OrderClient = ({ data }: OrderClientProps) => {
   return (
     <>
-       <Heading title={`Orders (${data?.length})`} description="Manage orders for your store"  />    
-       <Separator />
-       <DataTable searchKey="products" columns={Columns} data={data} />
+      <Heading
+        title={`Orders (${data?.length})`}
+        description="Manage orders for your store"
+      />
+      <Separator />
+      <DataTable searchKey="products" columns={Columns} data={data} />
     </>
-  )
-}
+  );
+};
 
-export default OrderClient
+export default OrderClient;

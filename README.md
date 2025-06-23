@@ -1,6 +1,7 @@
 # E-commerce Admin Dashboard
 
-A modern, full-stack e-commerce admin dashboard built with Next.js 13+, designed for managing multiple online stores from a single, powerful interface.
+A modern, full-stack e-commerce admin dashboard built with Next.js 13+, designed
+for managing multiple online stores from a single, powerful interface.
 
 ![Dashboard Preview](https://via.placeholder.com/800x400/1f2937/ffffff?text=Dashboard+Preview)
 
@@ -220,7 +221,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Please feel free to submit a Pull Request. For major
+changes, please open an issue first to discuss what you would like to change.
 
 ### Development Guidelines
 
@@ -232,7 +234,8 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 🙏 Acknowledgments
 

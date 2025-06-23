@@ -1,17 +1,16 @@
 "use client";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React, { useState } from "react";
-import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-import { Dialog } from "@headlessui/react";
 import { UserButton } from "@clerk/nextjs";
-import IconButton from "./ui/IconButton";
-const MainNav = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) => {
+
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+
+import { Button } from "./ui/button";
+import IconButton from "./common/IconButton";
+const MainNav = ({ className }: React.HTMLAttributes<HTMLElement>) => {
   const pathname = usePathname();
   const params = useParams();
   const [isOpen, setIsOpen] = useState(false);
@@ -58,9 +57,9 @@ const MainNav = ({
     <>
       <nav className={cn("space-x-4", className)}>
         <div
-          className={cn("hidden lg:flex items-center space-x-4 lg:space-x-6")}
+          className={cn("hidden items-center space-x-4 lg:flex lg:space-x-6")}
         >
-          {routes.map((route) => (
+          {routes.map(route => (
             <Link
               key={route.href}
               href={route.href}
@@ -74,11 +73,11 @@ const MainNav = ({
               {route.label}
             </Link>
           ))}
-          <div className="mx-auto flex justify-center items-center space-x-4">
+          <div className="mx-auto flex items-center justify-center space-x-4">
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>
-        <div className="lg:hidden">
+        {/* <div className="lg:hidden">
           <Button className="lg:hidden bg-white" onClick={onOpen}>
             <Menu size={25} color="black" />
           </Button>
@@ -116,6 +115,45 @@ const MainNav = ({
                 </div>
               </Dialog.Panel>
             </div>
+          </Dialog>
+        </div> */}
+        <div className="lg:hidden">
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <Button className="bg-white lg:hidden" onClick={onOpen}>
+                <Menu size={25} color="black" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="fixed inset-0 z-40 size-full max-w-none border-0 bg-transparent p-0 lg:hidden">
+              <div className="fixed inset-0 bg-black/25" />
+              <div className="fixed inset-0 flex">
+                <div className="relative ml-auto flex size-full max-w-xs flex-col overflow-y-auto bg-white py-6 pb-4 shadow-xl">
+                  <div className="flex items-center justify-end px-4">
+                    <IconButton icon={<X size={20} />} onClick={onClose} />
+                  </div>
+                  <div className="mx-auto flex items-center justify-center space-x-4">
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
+                  <div className="mt-10 flex w-full flex-col items-center space-y-3">
+                    {routes.map(route => (
+                      <Link
+                        onClick={onClose}
+                        key={route.href}
+                        href={route.href}
+                        className={cn(
+                          "text-xl font-medium transition-colors hover:text-primary",
+                          route.active
+                            ? "text-black dark:text-white"
+                            : "text-muted-foreground"
+                        )}
+                      >
+                        {route.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
           </Dialog>
         </div>
       </nav>

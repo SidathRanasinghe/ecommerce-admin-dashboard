@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { z } from "zod";
 import { Store } from "@prisma/client";
-import Heading from "@/components/ui/Heading";
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
-import { Separator } from "./ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -17,13 +19,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import AlertModal from "./modals/alertModal";
-import ApiAlert from "./ui/api-alert";
+import { Button } from "@/components/ui/button";
+import Heading from "@/components/common/Heading";
 import { useOrigin } from "@/hooks/useOrigin";
+
+import { Separator } from "./ui/separator";
+import AlertModal from "./modals/alertModal";
+import ApiAlert from "./common/api-alert";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -51,6 +53,7 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
       router.refresh();
       toast.success("changes saved successfully");
     } catch (error) {
+      console.error("SettingsForm: onSubmit: Error: ", error);
       toast.error("Failed to to save settings");
     } finally {
       setIsLoading(false);
@@ -64,6 +67,7 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
       router.push("/");
       toast.success("store deleted!");
     } catch (error) {
+      console.error("SettingsForm: onDelete: Error: ", error);
       toast.error("Make sure you don't have products and categories first");
     } finally {
       setIsLoading(false);
@@ -89,16 +93,16 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
           onClick={() => setIsOpen(true)}
           size="sm"
         >
-          <Trash className="h-4 w-4" />
+          <Trash className="size-4" />
         </Button>
       </div>
       <Separator />
       <Form {...form}>
         <form
-          className="space-y-8 w-full"
+          className="w-full space-y-8"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid gap-8 sm:grid-cols-3">
             <FormField
               control={form.control}
               name="name"
