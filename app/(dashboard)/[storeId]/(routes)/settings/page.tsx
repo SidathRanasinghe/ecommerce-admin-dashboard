@@ -5,14 +5,14 @@ import SettingsForm from "@/components/SettingsForm";
 import prismadb from "@/lib/prismadb";
 
 interface SettingPageProps {
-  params: {
-    storeId: string;
-  };
+  params: Promise<{ storeId: string }>;
 }
 
-const SettingPage = async ({ params: { storeId } }: SettingPageProps) => {
+const SettingPage = async ({ params }: SettingPageProps) => {
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
+
+  const { storeId } = await params;
 
   const store = await prismadb.store.findFirst({
     where: {

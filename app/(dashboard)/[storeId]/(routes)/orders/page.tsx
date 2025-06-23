@@ -4,22 +4,17 @@ import { OrderColumn } from "@/components/orders/Columns";
 import OrderClient from "@/components/orders/client";
 import prismadb from "@/lib/prismadb";
 
-const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
+interface OrdersPageProps {
+  params: Promise<{ storeId: string }>;
+}
+
+const OrdersPage = async ({ params }: OrdersPageProps) => {
+  const { storeId } = await params;
   const orders = await prismadb.order.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-    include: {
-      orderItems: {
-        include: {
-          product: true,
-        },
-      },
-    },
+    where: { storeId },
+    include: { orderItems: { include: { product: true } } },
     take: 20,
-    orderBy: {
-      createdAt: "desc",
-    },
+    orderBy: { createdAt: "desc" },
   });
 
   const formattedOrders: OrderColumn[] = orders.map(order => ({

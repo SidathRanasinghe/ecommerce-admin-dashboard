@@ -4,18 +4,16 @@ import { ProductColumn } from "@/components/products/Columns";
 import ProductClient from "@/components/products/client";
 import prismadb from "@/lib/prismadb";
 
-const ProductsPage = async ({ params }: { params: { storeId: string } }) => {
+interface ProductsPageProps {
+  params: Promise<{ storeId: string }>;
+}
+
+const ProductsPage = async ({ params }: ProductsPageProps) => {
+  const { storeId } = await params;
   const products = await prismadb.product.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-    include: {
-      category: true,
-      size: true,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
+    where: { storeId },
+    include: { category: true, size: true },
+    orderBy: { createdAt: "desc" },
   });
 
   const formattedProducts: ProductColumn[] = products.map(product => ({

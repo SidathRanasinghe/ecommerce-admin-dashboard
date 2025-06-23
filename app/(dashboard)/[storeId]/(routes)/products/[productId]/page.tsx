@@ -1,31 +1,22 @@
 import ProductForm from "@/components/ProductForm";
 import prismadb from "@/lib/prismadb";
 
-import {} from "@prisma/client";
+interface ProductPageProps {
+  params: Promise<{ productId: string; storeId: string }>;
+}
 
-const ProductPage = async ({
-  params,
-}: {
-  params: { productId: string; storeId: string };
-}) => {
+const ProductPage = async ({ params }: ProductPageProps) => {
+  const { productId, storeId } = await params;
   const product = await prismadb.product.findFirst({
-    where: {
-      id: params.productId,
-    },
-    include: {
-      images: true,
-    },
+    where: { id: productId },
+    include: { images: true },
   });
 
   const categories = await prismadb.category.findMany({
-    where: {
-      storeId: params.storeId,
-    },
+    where: { storeId },
   });
   const sizes = await prismadb.size.findMany({
-    where: {
-      storeId: params.storeId,
-    },
+    where: { storeId },
   });
 
   return (

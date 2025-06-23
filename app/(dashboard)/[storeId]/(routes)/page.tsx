@@ -12,14 +12,15 @@ import { Separator } from "@/components/ui/separator";
 import { priceFormat } from "@/lib/utils";
 
 interface DashboardPageProps {
-  params: { storeId: string };
+  params: Promise<{ storeId: string }>;
 }
 
 const DashboardPage = async ({ params }: DashboardPageProps) => {
-  const revenue = await getTotalRevenue(params.storeId);
-  const salesCount = await getTotalSales(params.storeId);
-  const stockCount = await getStockSize(params.storeId);
-  const graphData = await getGraphRevenue(params.storeId);
+  const { storeId } = await params;
+  const revenue = await getTotalRevenue(storeId);
+  const salesCount = await getTotalSales(storeId);
+  const stockCount = await getStockSize(storeId);
+  const graphData = await getGraphRevenue(storeId);
   return (
     <div className="flex-col">
       <div className="flex-1 space-y-4 p-8 pt-6">

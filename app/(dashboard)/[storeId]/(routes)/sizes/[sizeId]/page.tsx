@@ -3,11 +3,14 @@ import React from "react";
 import SizeForm from "@/components/SizeForm";
 import prismadb from "@/lib/prismadb";
 
-const SizePage = async ({ params }: { params: { sizeId: string } }) => {
+interface SizePageProps {
+  params: Promise<{ sizeId: string }>;
+}
+
+const SizePage = async ({ params }: SizePageProps) => {
+  const { sizeId } = await params;
   const sizes = await prismadb.size.findFirst({
-    where: {
-      id: params.sizeId,
-    },
+    where: { id: sizeId },
   });
 
   return (

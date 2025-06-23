@@ -6,7 +6,7 @@ import prismadb from "@/lib/prismadb";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
-  params: { storeId: string };
+  params: Promise<{ storeId: string }>;
 }
 export default async function DashboardLayout({
   children,
@@ -15,9 +15,11 @@ export default async function DashboardLayout({
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
 
+  const { storeId } = await params;
+
   const store = await prismadb.store.findFirst({
     where: {
-      id: params?.storeId,
+      id: storeId,
       userId,
     },
   });

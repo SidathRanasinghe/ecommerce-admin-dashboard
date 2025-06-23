@@ -4,14 +4,15 @@ import { BillboardColumn } from "@/components/billboard/Columns";
 import BillboardClient from "@/components/billboard/client";
 import prismadb from "@/lib/prismadb";
 
-const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
+interface BillboardsPageProps {
+  params: Promise<{ storeId: string }>;
+}
+
+const BillboardsPage = async ({ params }: BillboardsPageProps) => {
+  const { storeId } = await params;
   const billboards = await prismadb.billboard.findMany({
-    where: {
-      storeId: params.storeId,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
+    where: { storeId },
+    orderBy: { createdAt: "desc" },
   });
 
   const formattedBillboards: BillboardColumn[] = billboards.map(billboard => ({
