@@ -36,6 +36,7 @@ export async function POST(
     });
     return NextResponse.json(size);
   } catch (error) {
+    console.error("app/api/[storeId]/sizes/route.ts: Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -54,6 +55,7 @@ export async function GET(
     });
     return NextResponse.json(sizes);
   } catch (error) {
+    console.error("app/api/[storeId]/sizes/route.ts: Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

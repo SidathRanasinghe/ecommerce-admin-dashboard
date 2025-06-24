@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React, { useState } from "react";
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "./ui/button";
 import IconButton from "./common/IconButton";
+
 const MainNav = ({ className }: React.HTMLAttributes<HTMLElement>) => {
   const pathname = usePathname();
   const params = useParams();

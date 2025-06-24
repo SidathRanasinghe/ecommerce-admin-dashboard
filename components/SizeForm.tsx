@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import Heading from "@/components/common/Heading";
 
 import { Separator } from "./ui/separator";
-import AlertModal from "./modals/alertModal";
+import AlertModal from "./modals/AlertModal";
 
 interface SizeFormProps {
   initialData: Size | null;

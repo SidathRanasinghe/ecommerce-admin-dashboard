@@ -1,13 +1,17 @@
+import type React from "react";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 
-import { ModalProvider } from "@/providers/modal-provider";
-import ToastProvider from "@/providers/toast-provider";
+import { ClientProviders } from "@/providers/ClientProviders";
 
 import "./globals.css";
 
-const poppins = Poppins({ weight: "500", style: "normal", subsets: ["latin"] });
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-hanken-grotesk",
+});
 
 export const metadata: Metadata = {
   title: "Home - Admin Dashboard",
@@ -22,10 +26,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={poppins.className}>
-          <ToastProvider />
-          <ModalProvider />
-          {children}
+        {/* added `suppressHydrationWarning={true}` to avoid triggering hydration errors caused on browser extensions like Grammarly */}
+        <body
+          className={hankenGrotesk.className}
+          suppressHydrationWarning={true}
+        >
+          <ClientProviders>{children}</ClientProviders>
         </body>
       </html>
     </ClerkProvider>

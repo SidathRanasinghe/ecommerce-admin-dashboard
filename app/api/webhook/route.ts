@@ -11,11 +11,16 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      process.env.STRIPE_WEB_HOOK_SECRET!
-    );
+    const webhookSecret = process.env.STRIPE_WEB_HOOK_SECRET;
+    if (!webhookSecret) {
+      return new NextResponse(
+        "Stripe webhook secret is not set in environment variables",
+        {
+          status: 500,
+        }
+      );
+    }
+    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (error: any) {
     return new NextResponse(`Error with webhook signature: ${error.message}`, {
       status: 500,
@@ -56,7 +61,7 @@ export async function POST(req: Request) {
       },
     });
     const productIds = order?.orderItems?.map(
-      (order: { productId: any }) => order?.productId
+      (order: { productId: string }) => order?.productId
     );
     await prismadb.product.updateMany({
       where: {
