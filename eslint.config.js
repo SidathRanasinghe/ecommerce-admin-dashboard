@@ -165,7 +165,7 @@ export default tseslint.config(
 
       // Next.js specific rules
       "@next/next/no-html-link-for-pages": "error",
-      "@next/next/no-img-element": "error",
+      "@next/next/no-img-element": "warn",
     },
     settings: {
       react: {

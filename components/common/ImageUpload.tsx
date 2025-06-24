@@ -48,7 +48,13 @@ const ImageUpload = ({
                 <Trash className="size-4" />
               </Button>
             </div>
-            <Image src={url} alt="cover image" className="object-cover" fill />
+            <Image
+              src={url}
+              alt="cover image"
+              className="object-cover"
+              fill
+              sizes="(max-width: 768px) 100%, 200px"
+            />
           </div>
         ))}
       </div>
