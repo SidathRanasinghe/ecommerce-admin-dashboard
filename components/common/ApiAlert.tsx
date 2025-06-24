@@ -1,4 +1,5 @@
 "use client";
+
 import { Copy, Server } from "lucide-react";
 import { toast } from "react-hot-toast";
 
@@ -16,6 +17,7 @@ const textMap: Record<ApiAlertProps["variant"], string> = {
   public: "Public",
   admin: "Admin",
 };
+
 const variantMap: Record<ApiAlertProps["variant"], BadgeProps["variant"]> = {
   public: "secondary",
   admin: "destructive",

@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
-import { SizeColumn } from "@/components/sizes/Columns";
-import SizeClient from "@/components/sizes/client";
+import { SizeColumn } from "@/components/sizes/types";
+import SizeClient from "@/components/sizes/SizeClient";
 import prismadb from "@/lib/prismadb";
 
 interface SizesPageProps {

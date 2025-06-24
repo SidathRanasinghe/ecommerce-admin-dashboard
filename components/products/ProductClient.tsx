@@ -6,10 +6,11 @@ import { useParams, useRouter } from "next/navigation";
 import Heading from "../common/Heading";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { DataTable } from "../common/dataTable";
+import { DataTable } from "../common/DataTable";
 import ApiList from "../ApiList";
 
-import { Columns, ProductColumn } from "./Columns";
+import { Columns } from "./Columns";
+import { ProductColumn } from "./types";
 
 interface ProductClientProps {
   data: ProductColumn[];

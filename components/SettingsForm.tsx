@@ -24,8 +24,8 @@ import Heading from "@/components/common/Heading";
 import { useOrigin } from "@/hooks/useOrigin";
 
 import { Separator } from "./ui/separator";
-import AlertModal from "./modals/alertModal";
-import ApiAlert from "./common/api-alert";
+import AlertModal from "./modals/AlertModal";
+import ApiAlert from "./common/ApiAlert";
 
 interface SettingsFormProps {
   initialData: Store;

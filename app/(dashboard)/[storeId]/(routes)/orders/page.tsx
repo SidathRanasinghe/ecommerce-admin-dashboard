@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
-import { OrderColumn } from "@/components/orders/Columns";
-import OrderClient from "@/components/orders/client";
+import { OrderColumn } from "@/components/orders/types";
+import OrderClient from "@/components/orders/OrderClient";
 import prismadb from "@/lib/prismadb";
 
 interface OrdersPageProps {
