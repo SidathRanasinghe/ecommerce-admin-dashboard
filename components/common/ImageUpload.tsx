@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
@@ -19,11 +19,11 @@ const ImageUpload = ({
   onChange,
   onRemove,
 }: ImageUploadProps) => {
-  const [isMounted, setIsMounted] = useState(false);
+  // const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
   //if(!isMounted) redirect('/');
 
