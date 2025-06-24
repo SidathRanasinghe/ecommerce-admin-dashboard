@@ -39,6 +39,7 @@ export const CellAction = ({ data }: ICellAction) => {
       router.refresh();
       toast.success("billboard deleted!");
     } catch (error) {
+      console.error("Error: ", error);
       toast.error("You can't delete sizes with  products");
     } finally {
       setIsLoading(false);

@@ -1,6 +1,5 @@
 "use client";
 
-// import { useState, useEffect } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import { ImagePlus, Trash } from "lucide-react";
 import Image from "next/image";
@@ -19,14 +18,6 @@ const ImageUpload = ({
   onChange,
   onRemove,
 }: ImageUploadProps) => {
-  // const [isMounted, setIsMounted] = useState(false);
-
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, []);
-
-  //if(!isMounted) redirect('/');
-
   const onUpload = (res: any) => {
     onChange(res?.info?.secure_url);
   };
@@ -48,7 +39,13 @@ const ImageUpload = ({
                 <Trash className="size-4" />
               </Button>
             </div>
-            <Image src={url} alt="cover image" className="object-cover" fill />
+            <Image
+              src={url}
+              alt="cover image"
+              className="object-cover"
+              fill
+              sizes="(max-width: 768px) 100%, 200px"
+            />
           </div>
         ))}
       </div>

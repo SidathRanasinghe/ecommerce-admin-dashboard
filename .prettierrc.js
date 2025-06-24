@@ -15,7 +15,7 @@ const config = {
 
   // Tailwind CSS plugin
   plugins: ["prettier-plugin-tailwindcss"],
-  tailwindConfig: "./tailwind.config.js",
+  tailwindConfig: "./tailwind.config.ts",
   tailwindFunctions: ["clsx", "cn", "cva"],
 
   // File-specific overrides

@@ -124,6 +124,12 @@ export default tseslint.config(
         "warn",
         {
           allowConstantExport: true,
+          allowExportNames: [
+            "buttonVariants", // /components/ui/button.tsx
+            "useFormField", // /components/ui/form.tsx
+            "badgeVariants", // /components/ui/badge.tsx
+            "navigationMenuTriggerStyle", // components/ui/navigation-menu.tsx
+          ], // Allow specific named exports
         },
       ],
 
@@ -165,7 +171,7 @@ export default tseslint.config(
 
       // Next.js specific rules
       "@next/next/no-html-link-for-pages": "error",
-      "@next/next/no-img-element": "error",
+      "@next/next/no-img-element": "warn",
     },
     settings: {
       react: {
@@ -179,7 +185,7 @@ export default tseslint.config(
         node: true,
       },
       tailwindcss: {
-        config: "./tailwind.config.js",
+        config: "./tailwind.config.ts",
         cssFiles: [
           "**/*.css",
           "!**/node_modules",

@@ -67,6 +67,7 @@ export async function PATCH(
     });
     return NextResponse.json(product);
   } catch (error) {
+    console.error("Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -103,6 +104,7 @@ export async function DELETE(
     });
     return NextResponse.json(product);
   } catch (error) {
+    console.error("Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -127,6 +129,7 @@ export async function GET(
     });
     return NextResponse.json(product);
   } catch (error) {
+    console.error("Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

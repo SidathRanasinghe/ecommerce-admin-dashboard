@@ -53,6 +53,7 @@ export async function POST(
     });
     return NextResponse.json(product);
   } catch (error) {
+    console.error("Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
@@ -91,6 +92,7 @@ export async function GET(
     });
     return NextResponse.json(products);
   } catch (error) {
+    console.error("Error: ", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
