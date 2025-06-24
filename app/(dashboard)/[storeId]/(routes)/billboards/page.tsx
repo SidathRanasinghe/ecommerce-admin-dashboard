@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
-import { BillboardColumn } from "@/components/billboard/Columns";
-import BillboardClient from "@/components/billboard/client";
+import { BillboardColumn } from "@/components/billboard/types";
+import BillboardClient from "@/components/billboard/BillboardClient";
 import prismadb from "@/lib/prismadb";
 
 interface BillboardsPageProps {

@@ -3,6 +3,7 @@ import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 interface OverviewProps {
   data: any[];
 }
+
 const Overview = ({ data }: OverviewProps) => {
   return (
     <ResponsiveContainer width="100%" height={350}>

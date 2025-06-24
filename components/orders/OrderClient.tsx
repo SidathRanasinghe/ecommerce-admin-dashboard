@@ -1,8 +1,9 @@
 import Heading from "../common/Heading";
 import { Separator } from "../ui/separator";
-import { DataTable } from "../common/dataTable";
+import { DataTable } from "../common/DataTable";
 
-import { OrderColumn, Columns } from "./Columns";
+import { Columns } from "./Columns";
+import { OrderColumn } from "./types";
 
 interface OrderClientProps {
   data: OrderColumn[];

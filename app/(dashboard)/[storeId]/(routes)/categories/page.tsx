@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 import CategoryClient from "@/components/categories/CategoryClient";
-import { CategoryColumn } from "@/components/categories/Columns";
+import { CategoryColumn } from "@/components/categories/types";
 import prismadb from "@/lib/prismadb";
 
 interface CategoriesPageProps {

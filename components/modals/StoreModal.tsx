@@ -46,6 +46,7 @@ export const StoreModal = () => {
       router.replace(`/${data?.id}`);
       // window.location.assign(`${data?.id}`)
     } catch (error) {
+      console.error("onSubmit: Error: ", error);
       toast.error("something went wrong");
     } finally {
       setIsLoading(false);

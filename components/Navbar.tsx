@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import React from "react";
 import { redirect } from "next/navigation";
 
-import StoreSwitcher from "@/components/store-switcher";
+import StoreSwitcher from "@/components/StoreSwitcher";
 import prismadb from "@/lib/prismadb";
 
 import MainNav from "./MainNav";

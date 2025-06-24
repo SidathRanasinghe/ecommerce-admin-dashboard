@@ -23,7 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/common/Heading";
 
-import AlertModal from "./modals/alertModal";
+import AlertModal from "./modals/AlertModal";
 import { Separator } from "./ui/separator";
 import {
   Select,
